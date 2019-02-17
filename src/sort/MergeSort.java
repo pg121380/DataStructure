@@ -23,7 +23,7 @@ public class MergeSort {
         }
     }
 
-    public static void sort(int[] array, int low, int high){
+    private static void sort(int[] array, int low, int high){
         if(high <= low){
             return;
         }
