@@ -3,14 +3,14 @@ package sort;
 /**
  * 本类中封装了一些关于排序所需要的辅助方法（默认情况下按由小到大排序）
  */
-public abstract class Sorter {
+public class SortAssist {
     /**
      * 判断参数a是否小于参数b
      * @param a
      * @param b
      * @return
      */
-    public boolean less(int a, int b){
+    public static boolean less(int a, int b){
         return a < b;
     }
 
@@ -20,13 +20,13 @@ public abstract class Sorter {
      * @param i
      * @param j
      */
-    public void exchange(int[] array, int i, int j){
+    public static void exchange(int[] array, int i, int j){
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
 
-    public boolean isSorted(int[] array){
+    public static boolean isSorted(int[] array){
         for (int i = 1; i < array.length; i++) {
             if(less(array[i], array[i - 1])){
                 return false;
@@ -35,7 +35,7 @@ public abstract class Sorter {
         return true;
     }
 
-    public int[] getUnsortedArray(int length){
+    public static int[] getUnsortedArray(int length){
         int[] array = new int[length];
         for (int i = 0; i < length; i++) {
             array[i] = (int)(Math.random() * 1000);
@@ -43,11 +43,10 @@ public abstract class Sorter {
         return array;
     }
 
-    public void showArray(int[] array){
+    public static void showArray(int[] array){
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);
         }
     }
 
-    public abstract void sort(int[] array);
 }

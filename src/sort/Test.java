@@ -2,12 +2,12 @@ package sort;
 
 public class Test {
     public static void main(String[] args) {
-        Sorter sorter = new ShellSort();
-        int[] array = sorter.getUnsortedArray(50);
-        sorter.showArray(array);
-        sorter.sort(array);
-        System.out.println(sorter.isSorted(array));
-        System.out.println("-------------------------------");
-        sorter.showArray(array);
+        int[] array = SortAssist.getUnsortedArray(10);
+        MergeSort.sort(array);
+        if(SortAssist.isSorted(array)){
+            System.out.println("排序成功");
+        } else {
+            System.out.println("排序失败");
+        }
     }
 }
