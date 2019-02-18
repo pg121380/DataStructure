@@ -2,6 +2,14 @@ package sort;
 
 public class SelectSort {
     public static void sort(int[] array){
-        //TODO:完成选择排序和插入排序
+        for (int i = 0; i < array.length; i++) {
+            int min = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if(SortAssist.less(array[j], array[min])){
+                    min = j;
+                }
+            }
+            SortAssist.exchange(array, i, min);
+        }
     }
 }
