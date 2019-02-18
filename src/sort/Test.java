@@ -15,11 +15,13 @@ public class Test {
 
     @org.junit.Test
     public void compareSpeed(){
-        int[] arrayForMerge = SortAssist.getUnsortedArray(5000);
+        int[] arrayForMerge = SortAssist.getUnsortedArray(500000);
         int[] arrayForQuick = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForBubble = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForSelect = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForInsert = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
+        int[] arrayForShell = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
+        int[] arrayForDefault = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
 
         long mergeStartTime = System.currentTimeMillis();
         MergeSort.sort(arrayForMerge);
@@ -31,6 +33,11 @@ public class Test {
         QuickSort.sort(arrayForQuick);
         long quickEndTime = System.currentTimeMillis();
         System.out.println("快速排序：" + (quickEndTime - quickStartTime) + " ms");
+
+        long shellStartTime = System.currentTimeMillis();
+        ShellSort.sort(arrayForShell);
+        long shellEndTime = System.currentTimeMillis();
+        System.out.println("希尔排序：" + (shellEndTime - shellStartTime) + " ms");
 
 
         long bubbleStartTime = System.currentTimeMillis();
@@ -49,6 +56,11 @@ public class Test {
         InsertSort.sort(arrayForInsert);
         long insertEndTime = System.currentTimeMillis();
         System.out.println("插入排序：" + (insertEndTime - insertStartTime) + " ms");
+
+        long defaultStartTime = System.currentTimeMillis();
+        Arrays.sort(arrayForDefault);
+        long defaultEndTime = System.currentTimeMillis();
+        System.out.println("Arrays.sort()排序：" + (defaultEndTime - defaultStartTime) + " ms");
     }
 
     @org.junit.Test
