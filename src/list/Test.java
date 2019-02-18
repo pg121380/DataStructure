@@ -9,7 +9,7 @@ public class Test {
         linkedList.add(123);
         linkedList.add(456);
         linkedList.add(789);
-        linkedList.clear();
+        linkedList.peek();
     }
 
     @org.junit.Test
@@ -20,8 +20,10 @@ public class Test {
         list.add(3);
         list.add(4);
         list.add(5);
-        list.addFirst(123);
-        list.addFirst(456);
         list.show();
+        System.out.println("-------");
+        for(int i = 0;i < list.size();i++){
+            System.out.println(list.get(i));
+        }
     }
 }

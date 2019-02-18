@@ -93,4 +93,34 @@ public class LinkedList<T> {
     public boolean isEmpty(){
         return size() == 0;
     }
+
+    public T getFirst(){
+        if(head != null){
+            return head.getData();
+        } else {
+            throw new NoSuchElementException("头结点不存在！");
+        }
+    }
+
+    public T getLast(){
+        if(tail != null){
+            return tail.getData();
+        } else {
+            throw new NoSuchElementException("尾节点不存在！");
+        }
+    }
+
+    public T get(int index){
+        if(index + 1 > size()){
+            throw new IndexOutOfBoundsException("输入的下标大于链表长度！");
+        } else {
+            Node<T> temp = head;
+            for(int i = 0;i < index;i++){
+                temp = temp.getNext();
+            }
+            return temp.getData();
+        }
+    }
+
+    //TODO:完成remove()函数，pop()函数，push()函数，
 }
