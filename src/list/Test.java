@@ -9,7 +9,7 @@ public class Test {
         linkedList.add(123);
         linkedList.add(456);
         linkedList.add(789);
-        linkedList.peek();
+        linkedList.pop();
     }
 
     @org.junit.Test

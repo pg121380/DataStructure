@@ -111,8 +111,8 @@ public class LinkedList<T> {
     }
 
     public T get(int index){
-        if(index + 1 > size()){
-            throw new IndexOutOfBoundsException("输入的下标大于链表长度！");
+        if(!isLegalIndex(index)){
+            throw new IndexOutOfBoundsException("请输入正确的索引！");
         } else {
             Node<T> temp = head;
             for(int i = 0;i < index;i++){
@@ -122,5 +122,32 @@ public class LinkedList<T> {
         }
     }
 
-    //TODO:完成remove()函数，pop()函数，push()函数，
+    public T remove(int index){
+        // TODO:考虑头结点的删除
+        if(!isLegalIndex(index)){
+            throw new IndexOutOfBoundsException("请输入正确的索引！");
+        } else {
+            Node<T> temp = head;
+            for(int i = 0;i < index - 1;i++){
+                temp = temp.getNext();
+            }
+            Node<T> prev = temp;
+            Node<T> delNode = temp.getNext();
+            T elem = delNode.getData();
+            prev.setNext(delNode.getNext());
+            return elem;
+        }
+    }
+
+    public void push(T value){
+        addFirst(value);
+    }
+
+    public boolean isLegalIndex(int index){
+        return (index >= 0 && index < size);
+    }
+
+    public T pop(){
+        return remove(0);
+    }
 }
