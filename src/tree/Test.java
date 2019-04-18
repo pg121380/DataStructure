@@ -15,5 +15,14 @@ public class Test {
         tree.inOrderTraverse();
         System.out.println("----------后序遍历----------");
         tree.postOrderTraverse();
+
+        Integer[] array = new Integer[]{3, 9, 20, null, null, 15, 7};
+        Tree<Integer> tree2 = new Tree<>(array);
+        tree2.preOrderTraverse();
+
+        System.out.println("树的高度");
+        System.out.println(tree.getHeight(tree.getRoot()));
+
+        System.out.println(tree.contains(5));
     }
 }

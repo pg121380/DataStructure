@@ -123,7 +123,10 @@ public class LinkedList<T> {
     }
 
     public T remove(int index){
-        // TODO:考虑头结点的删除
+        if(index == 0){
+            Node<T> temp = head.getNext();
+            head = temp;
+        }
         if(!isLegalIndex(index)){
             throw new IndexOutOfBoundsException("请输入正确的索引！");
         } else {
