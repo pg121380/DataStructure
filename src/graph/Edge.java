@@ -5,6 +5,8 @@ public class Edge {
 
     private Edge nextEdge;          // 下一条弧
 
+    private int weight;             //权重
+
     public int getVertexPosition() {
         return vertexPosition;
     }
@@ -28,6 +30,14 @@ public class Edge {
 
     public Edge(){
 
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public Edge(int vertexPosition){

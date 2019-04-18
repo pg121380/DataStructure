@@ -75,6 +75,10 @@ public class Tree<Element> {
         inOrderTraverse(this.root);
     }
 
+    public void levelTraverse(){
+
+    }
+
     public TreeNode<Element> getRoot(){
         return this.root;
     }

@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Graph<Element> {
     private ArrayList<Vertex<Element>> vertices;        // 图的顶点表
@@ -43,19 +44,72 @@ public class Graph<Element> {
         this.kind = kind;
     }
 
-    public Graph(ArrayList<Vertex<Element>> vertices, int edgeNumber, int vertexNumber) {
+    /**
+     *
+     * @param kind 0表示有向图,1表示无向图
+     */
+    public Graph(int kind){
+        this.setKind(kind);
+    }
+
+    public Graph(ArrayList<Vertex<Element>> vertices, int edgeNumber, int vertexNumber, int kind) {
         this.vertices = vertices;
         this.edgeNumber = edgeNumber;
         this.vertexNumber = vertexNumber;
+        this.kind = kind;
     }
 
-    public Graph(int edgeNumber, int vertexNumber) {
+    public Graph(int edgeNumber, int vertexNumber, int kind) {
         this.edgeNumber = edgeNumber;
         this.vertexNumber = vertexNumber;
+        this.kind = kind;
     }
 
-    public Graph(ArrayList<Vertex<Element>> vertices) {
+    public Graph(ArrayList<Vertex<Element>> vertices, int kind) {
         this.vertices = vertices;
         this.setVertexNumber(vertices.size());
+        this.setKind(kind);
+    }
+
+    private void createGraph(){
+        if(this.vertexNumber == 0 || this.edgeNumber == 0) {
+            System.err.println("请至少输入一个点/边");
+            return;
+        }
+        if(this.vertices.isEmpty()){
+            System.err.println("顶点表中必须有信息！");
+            return;
+        } else {
+            for(Vertex<Element> vertex:vertices){
+                vertex.setFirstEdge(null);
+            }
+        }
+        Scanner scanner = new Scanner(System.in);
+        // 输入边
+        for(int i = 0;i < this.edgeNumber;i++){
+            int tail;   // 边尾(发出边的结点在节点表中的位置)
+            int head;   // 边头(边指向的结点在节点表的位置)
+            int weight; // 权重
+            Edge edge = new Edge();
+            System.out.println("以下是输入第" + (i + 1) + "条边的信息");
+            System.out.println("输入边头的位置:");
+            head = scanner.nextInt();
+            System.out.println("输入边尾的位置:");
+            tail = scanner.nextInt();
+            System.out.println("输入权重:");
+            weight = scanner.nextInt();
+
+            edge.setVertexPosition(head);
+            edge.setWeight(weight);
+            edge.setNextEdge(vertices.get(tail).getFirstEdge());
+            vertices.get(tail).setFirstEdge(edge);
+            if(this.kind == 1){
+                Edge edge1 = new Edge();
+                edge1.setVertexPosition(tail);
+                edge1.setWeight(weight);
+                edge1.setNextEdge(vertices.get(head).getFirstEdge());
+                vertices.get(head).setFirstEdge(edge1);
+            }
+        }
     }
 }
