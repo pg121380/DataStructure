@@ -33,4 +33,12 @@ public class Vertex<Element> {
     public Vertex() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Vertex{" +
+                "data=" + data +
+                ", firstEdge=" + firstEdge +
+                '}';
+    }
 }

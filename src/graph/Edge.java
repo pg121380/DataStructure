@@ -43,4 +43,13 @@ public class Edge {
     public Edge(int vertexPosition){
         this.vertexPosition = vertexPosition;
     }
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "vertexPosition=" + vertexPosition +
+                ", nextEdge=" + nextEdge +
+                ", weight=" + weight +
+                '}';
+    }
 }

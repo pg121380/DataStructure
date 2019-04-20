@@ -44,31 +44,20 @@ public class Graph<Element> {
         this.kind = kind;
     }
 
+
     /**
      *
-     * @param kind 0表示有向图,1表示无向图
+     * @param vertices  顶点表
+     * @param edgeNumber    边数
+     * @param vertexNumber  顶点数
+     * @param kind  图的种类: 0有向图 | 1 无向图
      */
-    public Graph(int kind){
-        this.setKind(kind);
-    }
-
     public Graph(ArrayList<Vertex<Element>> vertices, int edgeNumber, int vertexNumber, int kind) {
         this.vertices = vertices;
         this.edgeNumber = edgeNumber;
         this.vertexNumber = vertexNumber;
         this.kind = kind;
-    }
-
-    public Graph(int edgeNumber, int vertexNumber, int kind) {
-        this.edgeNumber = edgeNumber;
-        this.vertexNumber = vertexNumber;
-        this.kind = kind;
-    }
-
-    public Graph(ArrayList<Vertex<Element>> vertices, int kind) {
-        this.vertices = vertices;
-        this.setVertexNumber(vertices.size());
-        this.setKind(kind);
+        createGraph();
     }
 
     private void createGraph(){
@@ -85,6 +74,11 @@ public class Graph<Element> {
             }
         }
         Scanner scanner = new Scanner(System.in);
+        if(this.edgeNumber == 0){
+            System.out.println("请输入图的边数:");
+            int edgeNumber = scanner.nextInt();
+            this.setEdgeNumber(edgeNumber);
+        }
         // 输入边
         for(int i = 0;i < this.edgeNumber;i++){
             int tail;   // 边尾(发出边的结点在节点表中的位置)
