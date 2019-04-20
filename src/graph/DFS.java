@@ -24,9 +24,9 @@ public class DFS {
      */
     private static void DFS(Graph graph, int startVertexIndex){
         visited[startVertexIndex] = true;
-        System.out.println("访问了" + graph.getVertices().get(startVertexIndex));
+        System.out.println("访问了" + ((Vertex)graph.getVertices().get(startVertexIndex)).getData());
 
-        for(int i = Utils.getFirstVertexIndex(graph, startVertexIndex);i != 0;i = Utils.getNextVertexIndex(graph, startVertexIndex,i)){
+        for(int i = Utils.getFirstVertexIndex(graph, startVertexIndex);i > 0;i = Utils.getNextVertexIndex(graph, startVertexIndex,i)){
             if(!visited[i]){
                 DFS(graph, i);
             }

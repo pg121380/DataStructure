@@ -1,5 +1,6 @@
 package graph;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,10 +58,9 @@ public class Graph<Element> {
         this.edgeNumber = edgeNumber;
         this.vertexNumber = vertexNumber;
         this.kind = kind;
-        createGraph();
     }
 
-    private void createGraph(){
+    public void createGraph(){
         if(this.vertexNumber == 0 || this.edgeNumber == 0) {
             System.err.println("请至少输入一个点/边");
             return;
