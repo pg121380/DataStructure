@@ -1,6 +1,6 @@
 package graph;
 
-import java.io.File;
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -40,5 +40,10 @@ public class Test {
     public void testBFS(){
         Graph<String> graphFromFile = Utils.createGraphFromFile(".\\src\\graph\\graph.data");
         BFS.BFSTraverse(graphFromFile, 0);
+    }
+    @org.junit.Test
+    public void testUtils(){
+        Graph<String> graph = Utils.createGraphFromFile(".\\src\\graph\\graph.data");
+        System.out.println(Utils.getNextVertexIndex(graph, 4, 2));
     }
 }

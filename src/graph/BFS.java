@@ -1,6 +1,7 @@
 package graph;
 
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BFS {
 
@@ -11,8 +12,9 @@ public class BFS {
         for(int i = 0;i < visited.length; i++){
             visited[i] = false;
         }
-        ArrayBlockingQueue<Integer> indexQueue = new ArrayBlockingQueue<Integer>(graph.getVertexNumber());
-        // visited[startVertexIndex] = true;
+        Queue<Integer> indexQueue = new LinkedList<Integer>();
+        visited[startVertexIndex] = true;
+        System.out.println("访问了" + ((Vertex)graph.getVertices().get(startVertexIndex)).getData());
         indexQueue.add(startVertexIndex);
 
         while(!indexQueue.isEmpty()){
@@ -20,7 +22,7 @@ public class BFS {
             for(int i = Utils.getFirstVertexIndex(graph, pollIndex);i >= 0;i = Utils.getNextVertexIndex(graph, pollIndex, i)){
                 if(!visited[i]){
                     visited[i] = true;
-                    indexQueue.add(i);
+                    indexQueue.offer(i);
                     System.out.println("访问了" + ((Vertex)graph.getVertices().get(i)).getData());
                 }
             }
