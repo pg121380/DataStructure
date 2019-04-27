@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Graph<Element> {
     private ArrayList<Vertex<Element>> vertices;        // 图的顶点表
 
+    private ArrayList<Edge> edges = new ArrayList<>();
+
     private int edgeNumber;     // 图的边的数量
 
     private int vertexNumber;     // 图的结点的数量
@@ -44,6 +46,13 @@ public class Graph<Element> {
         this.kind = kind;
     }
 
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(ArrayList<Edge> edges) {
+        this.edges = edges;
+    }
 
     /**
      *
@@ -95,14 +104,70 @@ public class Graph<Element> {
             edge.setVertexPosition(head);
             edge.setWeight(weight);
             edge.setNextEdge(vertices.get(tail).getFirstEdge());
+            edge.setTail(tail);
             vertices.get(tail).setFirstEdge(edge);
+            edges.add(edge);
             if(this.kind == 1){
+                // 无向图
                 Edge edge1 = new Edge();
                 edge1.setVertexPosition(tail);
                 edge1.setWeight(weight);
                 edge1.setNextEdge(vertices.get(head).getFirstEdge());
+                edge1.setTail(head);
                 vertices.get(head).setFirstEdge(edge1);
+                edges.add(edge1);
             }
         }
     }
+
+    public void Prim(int startIndex){
+        // 首先初始化一个数组inArray，用于保存已在生成树里的结点，初始化另一个数组notInArray，用于保存不在生成树中的结点
+        // 将开始结点放入数组，首先寻找所有tail在inArray中,head在notInArray中的边，然后找出权值最小的edge
+        // inArray增加edge.getHead notInArray删除edge.getHead
+        ArrayList<Integer> inList = new ArrayList<>();
+        ArrayList<Integer> notInList = new ArrayList<>();
+        ArrayList<Edge> msTree = new ArrayList<>();
+
+        for(int i = 0;i < this.vertices.size();i++){
+            if(vertices.get(i) != null && i != startIndex){
+                notInList.add(i);
+            }
+        }
+
+        inList.add(startIndex);
+
+        while(inList.size() != this.vertices.size()){
+            // TODO:首先寻找所有tail在inArray中,head在notInArray中的边，然后找出权值最小的edge
+            Edge targetEdge = getPrimEdge(inList, notInList);
+            inList.add(targetEdge.getVertexPosition());
+            notInList.remove(notInList.indexOf(targetEdge.getVertexPosition())); // 这里的问题
+            msTree.add(targetEdge);
+            System.out.println("inList:" + inList);
+            System.out.println("notInList:" + notInList);
+            System.out.println("-------------------");
+        }
+        System.out.println(msTree);
+    }
+
+    public Edge getPrimEdge(ArrayList<Integer> inList, ArrayList<Integer> notInList){
+        /**
+         * 此方法没有问题
+         */
+        ArrayList<Edge> edges = new ArrayList<>();
+        for(Edge edge : this.edges){
+            if(inList.contains(edge.getTail()) && notInList.contains(edge.getVertexPosition())){
+                edges.add(edge);
+            }
+        }
+        int minIndex = -1;
+        int min = Integer.MAX_VALUE;
+        for(int i = 0;i < edges.size();i++){
+            if(edges.get(i).getWeight() < min){
+                min = edges.get(i).getWeight();
+                minIndex = i;
+            }
+        }
+        return edges.get(minIndex);
+    }
+
 }

@@ -2,6 +2,7 @@ package graph;
 
 import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class Test {
@@ -45,5 +46,12 @@ public class Test {
     public void testUtils(){
         Graph<String> graph = Utils.createGraphFromFile(".\\src\\graph\\graph.data");
         System.out.println(Utils.getNextVertexIndex(graph, 4, 2));
+    }
+
+    @org.junit.Test
+    public void testPrim() {
+        Graph<String> graph = Utils.createGraphFromFile(".\\src\\graph\\graph.data");
+        graph.Prim(0);
+
     }
 }

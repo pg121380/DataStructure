@@ -67,13 +67,17 @@ public class Utils {
                 edge.setVertexPosition(head);
                 edge.setWeight(weight);
                 edge.setNextEdge(vertices.get(tail).getFirstEdge());
+                edge.setTail(tail);
                 vertices.get(tail).setFirstEdge(edge);
+                graph.getEdges().add(edge);
                 if(kind == 1){
                     Edge edge1 = new Edge();
                     edge1.setVertexPosition(tail);
                     edge1.setWeight(weight);
                     edge1.setNextEdge(vertices.get(head).getFirstEdge());
+                    edge1.setTail(head);
                     vertices.get(head).setFirstEdge(edge1);
+                    graph.getEdges().add(edge1);
                 }
             }
             return graph;

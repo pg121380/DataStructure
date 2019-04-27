@@ -7,6 +7,16 @@ public class Edge {
 
     private int weight;             //权重
 
+    private int tail;
+
+    public int getTail() {
+        return tail;
+    }
+
+    public void setTail(int tail) {
+        this.tail = tail;
+    }
+
     public int getVertexPosition() {
         return vertexPosition;
     }
@@ -50,6 +60,7 @@ public class Edge {
                 "vertexPosition=" + vertexPosition +
                 ", nextEdge=" + nextEdge +
                 ", weight=" + weight +
+                ", tail=" + tail +
                 '}';
     }
 }
