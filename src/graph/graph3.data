@@ -1,0 +1,9 @@
+vertexNumber=6
+edgeNumber=5
+kind=1
+v1,v2,v3,v4,v5,v6
+0 1 1
+1 2 2
+2 3 3
+3 4 4
+4 5 5
