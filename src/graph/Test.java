@@ -3,13 +3,13 @@ package graph;
 public class Test {
     @org.junit.Test
     public void testDFS(){
-        Graph<String> graphFromFile = Utils.createGraphFromFile(".\\src\\graph\\graph3.data");
+        Graph<String> graphFromFile = Utils.createGraphFromFile(".\\src\\graph\\graph2.data");
         DFS.DFSTraverse(graphFromFile);
     }
 
     @org.junit.Test
     public void testBFS(){
-        Graph<String> graphFromFile = Utils.createGraphFromFile(".\\src\\graph\\graph3.data");
+        Graph<String> graphFromFile = Utils.createGraphFromFile(".\\src\\graph\\graph2.data");
         BFS.BFSTraverse(graphFromFile, 0);
     }
 
