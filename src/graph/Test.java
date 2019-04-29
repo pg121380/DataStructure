@@ -16,7 +16,7 @@ public class Test {
 
     @org.junit.Test
     public void testPrim() {
-        Graph<String> graph = Utils.createGraphFromFile(".\\src\\graph\\graph3.data");
+        Graph<String> graph = Utils.createGraphFromFile(".\\src\\graph\\graph2.data");
         graph.Prim(0);
 
     }

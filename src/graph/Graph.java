@@ -146,13 +146,13 @@ public class Graph<Element> {
             System.out.println("notInList:" + notInList);
             System.out.println("-------------------");
         }
-        System.out.println(msTree);
+//        System.out.println(msTree);
+        for(int i = 0;i < msTree.size();i++){
+            System.out.println(msTree.get(i).getTail() + "--->" + msTree.get(i).getVertexPosition());
+        }
     }
 
     public Edge getPrimEdge(ArrayList<Integer> inList, ArrayList<Integer> notInList){
-        /**
-         * 此方法没有问题
-         */
         ArrayList<Edge> edges = new ArrayList<>();
         for(Edge edge : this.edges){
             if(inList.contains(edge.getTail()) && notInList.contains(edge.getVertexPosition())){
