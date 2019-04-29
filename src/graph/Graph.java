@@ -148,7 +148,7 @@ public class Graph<Element> {
         }
 //        System.out.println(msTree);
         for(int i = 0;i < msTree.size();i++){
-            System.out.println(msTree.get(i).getTail() + "--->" + msTree.get(i).getVertexPosition());
+            System.out.println(this.vertices.get(msTree.get(i).getTail()).getData() + "--->" +this.vertices.get(msTree.get(i).getVertexPosition()).getData());
         }
     }
 
@@ -168,6 +168,17 @@ public class Graph<Element> {
             }
         }
         return edges.get(minIndex);
+    }
+
+    /**
+     * @return 返回图的拓扑排序序列
+     */
+    public ArrayList<Integer> topologicalSort(){
+        // 首先要计算所有顶点的入度，给出一个入度数组
+        // 每次从入度表中拿出来一个入度为0的点
+        // 将所有以它为tail的边的head节点的入度-1
+        // 将此点放入列表
+        return null;
     }
 
 }
