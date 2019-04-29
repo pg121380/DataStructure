@@ -1,0 +1,12 @@
+vertexNumber=6
+edgeNumber=8
+kind=0
+C0,C1,C2,C3,C4,C5
+0 1 0
+0 3 0
+4 0 0
+1 5 0
+4 1 0
+2 1 0
+4 5 0
+2 5 0

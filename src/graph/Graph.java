@@ -178,7 +178,52 @@ public class Graph<Element> {
         // 每次从入度表中拿出来一个入度为0的点
         // 将所有以它为tail的边的head节点的入度-1
         // 将此点放入列表
-        return null;
+        ArrayList<Integer> topologicalList = new ArrayList<>();
+        int[] inDegrees = new int[this.vertexNumber];
+        for (int i = 0; i < inDegrees.length; i++) {
+            inDegrees[i] = 0;
+        }
+        for(Edge edge:this.edges){
+            inDegrees[edge.getVertexPosition()]++;
+        }
+//        for (int i = 0; i < inDegrees.length; i++) {
+//            System.out.println("C" + i + ":" +inDegrees[i]);
+//        }
+        while(true){
+            int index = -1;
+            int i;
+            for(i = 0;i < inDegrees.length;i++){
+                if(inDegrees[i] == 0 && !topologicalList.contains(i)){
+                    index = i;
+                    topologicalList.add(i);
+                    System.out.println(topologicalList);
+                    System.out.println("----------------------");
+                    break;
+                }
+            }
+
+            for(Edge edge:edges){
+                if(edge.getTail() == index){
+                    System.out.println(edge.getTail() + "--->" + edge.getVertexPosition());
+                    inDegrees[edge.getVertexPosition()]--;
+                }
+            }
+
+            if(topologicalList.size() == inDegrees.length){
+                break;
+            }
+            int counter = 0;
+            for(int j = 0;j < inDegrees.length;j++){
+                if(inDegrees[j] != 0 || topologicalList.contains(j)){
+                    counter++;
+                }
+            }
+            if (counter == inDegrees.length){
+                System.out.println("该图无法进行拓扑排序！");
+                break;
+            }
+        }
+        return topologicalList;
     }
 
 }
