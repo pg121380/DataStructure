@@ -1,5 +1,7 @@
 package sort;
 
+import tree.Heap;
+
 import java.util.Arrays;
 
 public class Test {
@@ -15,13 +17,14 @@ public class Test {
 
     @org.junit.Test
     public void compareSpeed(){
-        int[] arrayForMerge = SortAssist.getUnsortedArray(500000);
+        int[] arrayForMerge = SortAssist.getUnsortedArray(50000);
         int[] arrayForQuick = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForBubble = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForSelect = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForInsert = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForShell = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
         int[] arrayForDefault = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
+        int[] arrayForHeap = Arrays.copyOf(arrayForMerge, arrayForMerge.length);
 
         long mergeStartTime = System.currentTimeMillis();
         MergeSort.sort(arrayForMerge);
@@ -61,6 +64,11 @@ public class Test {
         Arrays.sort(arrayForDefault);
         long defaultEndTime = System.currentTimeMillis();
         System.out.println("Arrays.sort()排序：" + (defaultEndTime - defaultStartTime) + " ms");
+
+        long heapStartTime = System.currentTimeMillis();
+        HeapSort.sort(arrayForHeap);
+        long heapEndTime = System.currentTimeMillis();
+        System.out.println("堆排序：" + (heapEndTime - heapStartTime) + " ms");
     }
 
     @org.junit.Test
@@ -81,4 +89,12 @@ public class Test {
         InsertSort.sort(array);
         System.out.println(SortAssist.isSorted(array));
     }
+
+    @org.junit.Test
+    public void testHeap(){
+        int[] array = SortAssist.getUnsortedArray(500);
+        HeapSort.sort(array);
+        System.out.println(SortAssist.isSorted(array));
+    }
+
 }
